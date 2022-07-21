@@ -32,7 +32,7 @@ def home():
 @cross_origin()
 def predictRoute():
     image = request.json['image']
-    decodeImage(image, clApp.filename)
+    decodeImage(image, app.filename)
     result = clApp.classifier.predictiondogcat()
     return jsonify(result)
 
