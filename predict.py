@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Mar 20 18:45:05 2020
-
-@author: sudhanshukumar
-"""
-
 import numpy as np
 from keras.models import load_model
 from keras.preprocessing import image
@@ -27,11 +19,11 @@ class dogcat:
         test_image = np.expand_dims(test_image, axis = 0)
         result = model.predict(test_image)
 
-        if result[0][0] == 1:
-            prediction = 'dog'
+        if result[0][0] >= 0.5:
+            prediction = 'cat'
             return [{ "image" : prediction}]
         else:
-            prediction = 'cat'
+            prediction = 'dog'
             return [{ "image" : prediction}]
 
 
